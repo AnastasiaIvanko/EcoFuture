@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFuture - Plant Trees for a Better Tomorrow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(90deg, #4caf50, #81c784);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 0;
+        }
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3em;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+            animation: slideInDown 1s ease-in-out;
+        }
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #81c784;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .intro, .features, .progress, .participate, .subscribe, .how-it-works, .projects, .gallery, .blog, .map, .countdown, .testimonials, .faq, .contact {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .intro::after, .features::after, .progress::after, .participate::after, .subscribe::after, .how-it-works::after, .projects::after, .gallery::after, .blog::after, .map::after, .countdown::after, .testimonials::after, .faq::after, .contact::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: #4caf50;
+            border-radius: 50%;
+            top: -25px;
+            right: -25px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2em;
+            color: #4caf50;
+            border-bottom: 2px solid #81c784;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .intro, .how-it-works {
+            text-align: center; /* Center the text */
+        }
+        .intro img, .how-it-works img {
+            width: 50%; /* Reduced size */
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto; /* Center the image */
+        }
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .features li:last-child {
+            margin-bottom: 0;
+        }
+        .features i {
+            font-size: 2em;
+            color: #4caf50;
+            margin-right: 20px;
+        }
+        .features p {
+            font-size: 1.1em;
+            line-height: 1.6em;
+        }
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            padding: 3px;
+            margin-bottom: 20px;
+        }
+        .progress-bar-inner {
+            height: 30px;
+            width: 60%; /* Change this value based on the progress */
+            background-color: #4caf50;
+            border-radius: 20px;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            font-weight: bold;
+            transition: width 0.5s ease;
+        }
+        .participate div {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .participate div p {
+            margin-bottom: 10px;
+        }
+        .participate button {
+            padding: 15px 30px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .participate button:hover {
+            background: #81c784;
+            transform: translateY(-5px);
+        }
+        .subscribe form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .subscribe form input {
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        .subscribe button {
+            padding: 15px 30px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .subscribe button:hover {
+            background: #81c784;
+            transform: translateY(-5px);
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .highlight {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        .callout {
+            background: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 10px;
+            margin: 20px 0;
+        }
+        .how-it-works, .projects, .gallery, .blog, .map, .countdown, .testimonials, .faq, .contact {
+            padding: 40px 20px;
+        }
+        .how-it-works h2, .projects h2, .gallery h2, .blog h2, .map h2, .countdown h2, .testimonials h2, .faq h2, .contact h2 {
+            font-size: 2.5em;
+        }
+        .how-it-works p, .projects p, .gallery p, .blog p, .map p, .countdown p, .testimonials p, .faq p, .contact p {
+            font-size: 1.2em;
+        }
+        .projects .card, .blog .post {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .projects .card img, .blog .post img {
+            width: 80%; /* Reduced size */
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .projects .card h3, .blog .post h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .projects .card p, .blog .post p {
+            font-size: 1.1em;
+            text-align: center;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .gallery img {
+            width: 30%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .map iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 8px;
+        }
+        .countdown {
+            text-align: center;
+        }
+        .countdown h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .countdown p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .countdown .timer {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #4caf50;
+        }
+        .testimonials .testimonial {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .testimonials .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            float: left;
+            margin-right: 20px;
+        }
+        .testimonials .testimonial p {
+            font-size: 1.2em;
+        }
+        .testimonials .testimonial h4 {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+        .testimonials .testimonial .stars {
+            color: #ffc107;
+        }
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact form input, .contact form textarea {
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        .contact form textarea {
+            resize: none;
+            height: 150px;
+        }
+        .contact button {
+            padding: 15px 30px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .contact button:hover {
+            background: #81c784;
+            transform: translateY(-5px);
+        }
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            .projects .card, .blog .post {
+                margin-bottom: 20px;
+            }
+            .gallery img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>EcoFuture</h1>
+        <p>Plant Trees for a Better Tomorrow</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#blog">Blog</a></li>
+            
+           
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div id="about" class="intro">
+            <h2>About the Project</h2>
+            <img src="./j1vdma0yau.jpeg" alt="Planting Trees">
+            <p>EcoFuture is dedicated to making the world a greener place by planting trees. Our mission is to restore forests, create habitats for biodiversity, and combat climate change. Join us in our efforts to plant a million trees and make a lasting impact on our planet.</p>
+        </div>
+        <div class="features">
+            <h2>Why Plant Trees?</h2>
+            <ul>
+                <li><i class="fas fa-leaf"></i><p><span class="highlight">Environmental Benefits:</span> Trees absorb carbon dioxide, reduce soil erosion, and provide habitats for wildlife.</p></li>
+                <li><i class="fas fa-heartbeat"></i><p><span class="highlight">Health Benefits:</span> Trees improve air quality, reduce stress, and promote overall well-being.</p></li>
+                <li><i class="fas fa-users"></i><p><span class="highlight">Community Benefits:</span> Trees create green spaces for recreation, enhance the beauty of our neighborhoods, and increase property values.</p></li>
+            </ul>
+        </div>
+        <div class="progress">
+            <h2>Funding Progress</h2>
+            <div class="progress-bar">
+                <div class="progress-bar-inner">60% Funded</div>
+            </div>
+            <div class="callout">
+                <p>We've raised <span class="highlight">$60,000</span> out of our <span class="highlight">$100,000</span> goal. Help us reach our goal and plant more trees!</p>
+            </div>
+        </div>
+        <div class="participate">
+            <h2>How You Can Help</h2>
+            <div>
+                <p><span class="highlight">Donate:</span> Your donations will directly fund tree planting projects. Every dollar helps!</p>
+                <button>Donate Now</button>
+            </div>
+            <div>
+                <p><span class="highlight">Volunteer:</span> Join our team of volunteers to help plant trees in your community. It's a great way to make a tangible impact.</p>
+                <button>Sign Up to Volunteer</button>
+            </div>
+            <div>
+                <p><span class="highlight">Spread the Word:</span> Share our mission with your friends and family. Together, we can make a difference.</p>
+                <button>Share on Social Media</button>
+            </div>
+        </div>
+        <div class="subscribe">
+            <h2>Stay Updated</h2>
+            <form action="#" method="post">
+                <input type="email" name="email" placeholder="Your Email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+        <div id="how-it-works" class="how-it-works">
+            <h2>How It Works</h2>
+            <p>We partner with local communities and organizations to identify areas in need of reforestation. Our volunteers and partners work together to plant trees, monitor their growth, and ensure they thrive.</p>
+        </div>
+        <div id="projects" class="projects">
+            <h2>Our Projects</h2>
+            <div class="card">
+                <img src="./1.webp" alt="Project 1">
+                <h3>Urban Reforestation</h3>
+                <p>Our Urban Reforestation project aims to green urban areas by planting trees in parks, along streets, and in community gardens. This project helps to improve air quality, reduce urban heat islands, and provide green spaces for residents to enjoy. Join us in making our cities greener and healthier places to live.</p>
+            </div>
+            <div class="card">
+                <img src="./2.webp" alt="Project 2">
+                <h3>Coastal Restoration</h3>
+                <p>Our Coastal Restoration project focuses on planting mangroves and other coastal vegetation to protect shorelines from erosion, provide habitats for marine life, and improve water quality. By restoring coastal ecosystems, we help mitigate the effects of climate change and support biodiversity. Get involved to help preserve our vital coastal environments.</p>
+            </div>
+        </div>
+        <div id="gallery" class="gallery">
+            <h2>Gallery</h2>
+            <img src="./3.webp" alt="Gallery Image 1">
+            <img src="./4.webp" alt="Gallery Image 2">
+            <img src="./7.webp" alt="Gallery Image 3">
+            <img src="./8.jpeg" alt="Gallery Image 4">
+            <img src="./9.jpeg" alt="Gallery Image 5">
+            
+        </div>
+        <div id="blog" class="blog">
+            <h2>Blog</h2>
+            <div class="post">
+                
+                <h3>The Importance of Urban Trees</h3>
+                <p>Urban trees are essential for creating healthier, more livable cities. They provide shade, reduce air pollution, and improve mental well-being. In this post, we explore the many benefits of urban trees and share tips on how you can contribute to urban reforestation efforts in your community.</p>
+            </div>
+            <div class="post">
+                
+                <h3>Restoring Coastal Ecosystems</h3>
+                <p>Coastal ecosystems are vital for protecting shorelines, supporting marine life, and mitigating climate change. In this post, we discuss the importance of coastal restoration projects, the role of mangroves in preserving coastal areas, and how you can get involved in local restoration efforts to help protect these critical environments.</p>
+            </div>
+        </div>
+        <div id="map" class="map">
+            <h2>Map</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509239!2d144.95373631531677!3d-37.81627977975195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d9a9f4a5fdfb!2sEcoFuture%20Project!5e0!3m2!1sen!2sus!4v1626249189076!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div id="countdown" class="countdown">
+            <h2>Next Event</h2>
+            <p>Countdown to our next major tree planting event:</p>
+            <div class="timer">00 Days 00 Hours 00 Minutes 00 Seconds</div>
+        </div>
+        <div id="testimonials" class="testimonials">
+            <h2>Testimonials</h2>
+            <div class="testimonial">
+               
+                <h4>John Doe</h4>
+                <p>EcoFuture has made a huge impact on our community. We've seen significant improvements in air quality and green spaces.</p>
+                <div class="stars">★★★★★</div>
+            </div>
+            <div class="testimonial">
+                
+                <h4>Jane Smith</h4>
+                <p>Volunteering with EcoFuture has been an incredible experience. It's amazing to see the positive change we're making.</p>
+                <div class="stars">★★★★★</div>
+            </div>
+        </div>
+        <div id="faq" class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <p><span class="highlight">Q:</span> How can I donate?<br>
+               <span class="highlight">A:</span> You can donate online through our secure donation platform. Every dollar helps us plant more trees and make a bigger impact.</p>
+            <p><span class="highlight">Q:</span> How do I become a volunteer?<br>
+               <span class="highlight">A:</span> Sign up on our website to become a volunteer. We will contact you with information about upcoming tree planting events in your area.</p>
+        </div>
+        <div id="contact" class="contact">
+            <h2>Contact Us</h2>
+            <form action="#" method="post">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 EcoFuture. All rights reserved.</p>
+    </footer>
+    <script>
+        // Countdown timer script
+        function countdownTimer() {
+            const countdownDate = new Date("Jul 31, 2024 00:00:00").getTime();
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                document.querySelector(".timer").innerHTML = days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds";
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.querySelector(".timer").innerHTML = "Event Ended";
+                }
+            }, 1000);
+        }
+        countdownTimer();
+    </script>
+</body>
+</html>
