@@ -371,10 +371,77 @@
                 width: 100%;
             }
         }
+
+
+
+
+
+ 
+        .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+.footer-content a {
+    color: #00bcd4;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    position: relative;
+}
+
+.footer-content a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #00bcd4;
+    transition: width 0.3s;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+}
+
+.footer-content a:hover::after {
+    width: 100%;
+}
+
+.footer-content a:hover {
+    color: #ff4081;
+}
+
+@media (max-width: 600px) {
+    .footer-content {
+        font-size: 12px;
+    }
+}
+
     </style>
 </head>
 <body>
+
+
+
+
+
+
+
+    
+   
+   
+   
+
+
+
+
+
     <header>
+
+       
+          
+        
+
         <h1>EcoFuture</h1>
         <p>Plant Trees for a Better Tomorrow</p>
     </header>
@@ -517,6 +584,9 @@
     </div>
     <footer>
         <p>&copy; 2024 EcoFuture. All rights reserved.</p>
+        <div class="footer-content">
+            <p>Website created by <a href="https://aiagency.space/" target="_blank">AI Agency</a></p>
+        </div>
     </footer>
     <script>
         // Countdown timer script
